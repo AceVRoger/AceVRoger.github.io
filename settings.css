@@ -12,7 +12,6 @@ h1, h2, h6 {
 }
 
 img {
-	float: left;
     width: 350px; height:300px;
 }
 
@@ -23,5 +22,5 @@ p {
 
 
 h6 {
-	clear: left;
+    clear: left;
 }
