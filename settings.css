@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+
+body {
+    background-color: red;
+    text-align: center;
+}
+
+h1, h2, h6 {
+    background-color: gold;
+    font-family: "Rampart One", serif;
+    color: black
+}
+
+p {
+    background-color: black;
+    color: pink;
+}
+
+img {
+    width: 350px; height:300px;
+}
