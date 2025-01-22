@@ -1,0 +1,22 @@
+first time only:
+setup the ssh key: ssh-keygen -t ed25519 -C "jacobcardon@mail.weber.edu"
+view public key: cat ~/.ssh/id_ed25519.pub
+how to get website directory: cd "directory_Name"
+
+
+copy portfolio files and paste it into your AceVRoger.github file
+be sure to have your webpages name set to "index.html"
+
+
+How to push changes into my repository: 3 step process
+
+type ls and then cd AceVRoger.github.
+
+1. on git-bash terminal type: git add -A (if it spams you hit "ctrl c" to stop it)
+2. then git commit -m "added portfolio site setup" (inside quotes is whatever message you want)
+3. git push origin main
+
+More than 1 device:
+
+clone and keys on every device...
+before each session: "git pull"

@@ -5,10 +5,56 @@
     <title>自己紹介</title>
     <link rel="StyleSheet" href="settings.css">
 </head>
-    <body>
-        <h1>Jacob's Portfolio</h1>
+    <body id="body">
+        <h1 id="header1">Jacob's Portfolio</h1>
 
-        <p>Hello, my name is Jacob Cardon.
+        <p id="lighting">Lighting</p>
+        <script>
+        function MakeDark() {
+            document.getElementById('body').style.backgroundColor = "black";
+            document.getElementById('lighting').style.color = "red";
+            document.getElementById('lighting').style.backgroundColor = "black";
+            document.getElementById('text').style.color = "red";
+            document.getElementById('text').style.backgroundColor = "black";
+            document.getElementById('projects').style.color = "red";
+            document.getElementById('projects').style.backgroundColor = "black";
+            document.getElementById('header1').style.backgroundColor = "grey";
+            document.getElementById('header2').style.backgroundColor = "grey";
+            document.getElementById('header6').style.backgroundColor = "grey";
+        }
+
+        function MakeDefault() {
+            document.getElementById('body').style.backgroundColor = "red";
+            document.getElementById('lighting').style.color = "yellow";
+            document.getElementById('lighting').style.backgroundColor = "red";
+            document.getElementById('text').style.color = "yellow";
+            document.getElementById('text').style.backgroundColor = "red";
+            document.getElementById('projects').style.color = "yellow";
+            document.getElementById('projects').style.backgroundColor = "red";
+            document.getElementById('header1').style.backgroundColor = "gold";
+            document.getElementById('header2').style.backgroundColor = "gold";
+            document.getElementById('header6').style.backgroundColor = "gold";
+        }
+
+        function MakePink() {
+            document.getElementById('body').style.backgroundColor = "#ffb7c5";
+            document.getElementById('lighting').style.color = "#e0218a";
+            document.getElementById('lighting').style.backgroundColor = "#ffb7c5";
+            document.getElementById('text').style.color = "#e0218a";
+            document.getElementById('text').style.backgroundColor = "#ffb7c5";
+            document.getElementById('projects').style.color = "#e0218a";
+            document.getElementById('projects').style.backgroundColor = "#ffb7c5";
+            document.getElementById('header1').style.backgroundColor = "#db7093";
+            document.getElementById('header2').style.backgroundColor = "#db7093";
+            document.getElementById('header6').style.backgroundColor = "#db7093";
+        }
+        </script>
+
+        <button onclick="MakeDark()">Dark</button>
+        <button onclick="MakeDefault()">Default</button>
+        <button onclick="MakePink()">Barbie</button>
+
+        <p id="text">Hello, my name is Jacob Cardon.
         I am a student at Weber State University right now and have been attending Weber since Fall of 2020.
         I am majoring in Computer Science and minoring in Japanese. Before coming to Weber State University,
         I was living in Japan as a Service Missionary. However, I was forced to return home early due to COVID.
@@ -17,10 +63,10 @@
 
         <img src="Self-Portrait.JPG" alt="Self Portrait">
 
-        <h2>Upcoming Projects</h2>
+        <h2 id="header2">Upcoming Projects</h2>
 
-        <p>Stay tuned</p>
+        <p id="projects">Stay tuned</p>
 
-        <h6>copyright 2025 Jacob V. Cardon. All rights reserved</h6>
+        <h6 id="header6">copyright 2025 Jacob V. Cardon. All rights reserved</h6>
     </body>
 </html>

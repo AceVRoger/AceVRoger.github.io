@@ -1,0 +1,9 @@
+cd AceVRoger.github.io			(Go into website directory)
+
+git pull				(Pull down contents from repository)
+
+ls					(See directory contents)
+
+git add -A				(Add all changes)
+git commit -m "message"			(Commit all changes)
+git push origin main			(Push committed changes to repo)

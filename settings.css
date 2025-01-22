@@ -12,16 +12,18 @@ h1, h2, h6 {
 }
 
 img {
-	float: left;
     width: 350px; height:300px;
 }
 
 p {
-    background-color: black;
-    color: pink;
+    background-color: red;
+    color: yellow;
 }
 
+button {
+    width: 200px;
+}
 
 h6 {
-	clear: left;
+    clear: left;
 }
