@@ -27,3 +27,7 @@ button {
 h6 {
     clear: left;
 }
+
+label {
+    color: yellow;
+}
