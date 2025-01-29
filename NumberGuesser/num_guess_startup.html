@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Number Guess</title>
+		<script>
+            // Relationship expressions: true or false
+            // Relational operators: >,<,>=,<=,==,===,!=,!==
+            // Logical operators:
+            // && = and: which compares 2+ expressions into a single expression, result is true if all statements are true
+            // || = or: combine 2+ expressions into a single expression, result is true if at least 1 is true
+            // ! = not: reverses a relational expression
+
+			let number;
+			let score = 0;
+			let tries = 0;
+
+			// if statements control the flow of the program
+			// if: "all or nothing" (runs under a certain conditions, otherwise nothing happens)
+			// if else: "Coke or Pepsi" (one code runs under some circumstances, otherwise another code runs)
+			// if else if: "shades of grey" (multiple possible outcomes)
+
+			function getNewNumber()
+			{
+				// TODO: Generate random number.
+				number = parseInt(Math.random() * 100) + 1;
+			}
+
+			let cheat = false;
+			function toggleCheat()
+			{
+				// TODO: Setup cheat
+				cheat = !cheat;
+
+				if (!cheat) {
+				  getNewNumber();
+				  document.getElementById('showHint').innerHTML = 'New Number Generator.';
+				}
+
+				let output;
+				if (cheat) // "=== true" isn't needed
+				  output = number;
+				else
+				  output = '?';
+
+				document.getElementById('cheat').innerHTML = output;
+			}
+
+			function displayHints()
+			{
+				// TODO: Setup hints
+			}
+		</script>
+	</head>
+	<body onload="getNewNumber()">
+		<h1>Number Guess</h1>
+
+		<p>I am thinking of a number between 1 and 100.<br>
+		Try and guess it.</p>
+
+		<p>Hints:
+			<span id="showHint">Type a number and press enter.</span></p>
+
+		<p>Score: <span id="points">0</span></p>
+		<p>Attempts: <span id="attempts">0</span></p>
+
+		<form onsubmit="displayHints(); return false;">
+			What is your guess:
+			<input id="userInput" type="text" autofocus>
+		</form>
+
+		<input id="cheatbox" type="checkbox" onclick="toggleCheat()">
+		<label>Cheat: <span id="cheat">?</span></label>
+	</body>
+</html>
