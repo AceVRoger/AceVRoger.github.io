@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shape Area and Volume Calculator</title>
+    <link rel="StyleSheet" href="../settings.css">
+</head>
+    <body>
+        <h1>Shape Area and Volume Calculator</h1>
+        <p>This page is dedicated to finding the Perimeter, Area and Volume of circles as well as spheres</p>
+        <h2>Circles</h2>
+        <img src="images/CircleImage.png" alt="Picture-of-a-Circle"><br>
+
+
+        <label for='radiusPInput'>Input Radius Of Circle:</label>
+        <input type="number" id='radiusPInput'>
+        <button onclick="calculatePerimeter()">Calculate Perimeter</button>
+        <p id="resultP"></p>
+
+
+        <br>
+
+        <label for='radiusAInput'>Input Radius of Circle:</label>
+        <input type="number" id='radiusAInput'>
+        <button onclick="calculateArea()">Calculate Area</button>
+        <p id="resultA"></p>
+
+        <br>
+
+        <h2>Spheres</h2>
+        <img src="images/SphereImage.png" alt="Picture-of-a-Sphere"><br>
+        <label for='radiusSInput'>Input Radius of Sphere:</label>
+        <input type="number" id='radiusSInput'>
+        <button onclick="calculateVolume()">Calculate Volume</button>
+        <p id="resultS"></p>
+
+
+        <script>
+            function calculatePerimeter() {
+                const radius = document.getElementById('radiusPInput').value;
+                const perimeter = 2 * Math.PI * radius;
+                document.getElementById('resultP').innerHTML = `The perimeter of the circle is... ${perimeter.toFixed(3)}`;
+            }
+
+            function calculateArea() {
+                const radius = document.getElementById('radiusAInput').value;
+                const area = Math.PI * radius ** 2;
+                document.getElementById('resultA').innerHTML = `The area of the circle is... ${area.toFixed(3)}`;
+            }
+
+            function calculateVolume() {
+                const radius = document.getElementById('radiusSInput').value;
+                const volume = (4/3) * Math.PI * (radius ** 3);
+                document.getElementById('resultS').innerHTML = `The volume of the sphere is... ${volume.toFixed(3)}`;
+            }
+
+        </script>
+
+    </body>
+</html>
