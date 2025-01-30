@@ -36,11 +36,15 @@
 				  document.getElementById('showHint').innerHTML = 'New Number Generator.';
 				}
 
-				let output;
-				if (cheat) // "=== true" isn't needed
-				  output = number;
-				else
-				  output = '?';
+				//let output;
+				//if (cheat) // "=== true" isn't needed
+				//  output = number;
+				//else
+				//  output = '?';
+
+				// Ternary operator
+				// (relational expression) ? (true outcome) : (false outcome);
+				let output = cheat ? number : '?';
 
 				document.getElementById('cheat').innerHTML = output;
 			}
@@ -48,6 +52,21 @@
 			function displayHints()
 			{
 				// TODO: Setup hints
+				let guess = document.getElementById('userInput').value;
+				let hint;
+
+				if (guess > number)
+					hint = "Too High";
+				else if (guess < number)
+					hint = "Too Low"
+				else if (guess == number) {
+					hint = "That's Right!";
+					document.getElementById('points').innerHTML = ++score;
+				}
+				else
+					hint = "Not a valid input."
+
+				document.getElementById('showHint').innerHTML = hint;
 			}
 		</script>
 	</head>
