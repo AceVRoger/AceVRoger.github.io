@@ -1,0 +1,26 @@
+body {
+    background-color: grey;
+}
+
+h1 {
+    background-color: black;
+    color: gold;
+    text-align: center;
+}
+
+#StartButton {
+    background-color: gold;
+    text-align: center;
+    align-items: center;
+    width: 310px;
+    font-size: 30px;
+}
+
+#gameStatus {
+    color: gold;
+    text-align: center;
+}
+
+.superSize {
+    font-size: 60px;
+}
