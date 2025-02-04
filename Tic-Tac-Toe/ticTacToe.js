@@ -43,6 +43,8 @@ function resetGame() {
     document.getElementById("b3").style.color = "";
     document.getElementById("c3").innerHTML = "";
     document.getElementById("c3").style.color = "";
+    // TODO: reset the gameStatus to indicate whose turn it is for a new game
+
 }
 
 function checkWin() {

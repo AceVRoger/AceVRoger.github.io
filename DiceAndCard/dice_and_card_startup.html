@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head lang="en-US">
+	<meta charset="UTF-8">
+		<title>Dice and Card Tester</title>
+		
+		<style>
+			.dice {
+				font-size: xxx-large;
+			}
+			
+			.card {
+				font-size: 100px;
+			}
+		</style>
+		
+		<script>
+			// while demo
+			function verifyAge() {				
+				// TODO: Verify age with while loop	
+			}
+		
+			// do-while demo
+			function diceRoll() {
+				// TODO: Roll dice with do-while loop
+				// TODO: Account for bad input with break
+			}
+			
+			// Spades   (127137)
+			// Hearts   (127153)
+			// Diamonds (127169)
+			// Clubs    (127185)
+			
+			function revealCards() {
+				// TODO: Reveal cards with for loop
+				// TODO: Skip knight with continue
+			}		
+		</script>
+	</head>
+	<body>
+		<h1>Dice and Card Tester</h1>
+		<p>Please verify your age to continue.</p>
+		
+		<button onclick='verifyAge()' id='ageButton'>Verify Age</button>
+	
+		<hr>
+	
+		<h2>Dice Tester</h2>
+		<label for='diceOutcome'>Desired Outcome (2-12): </label>
+		<input type='text' id='diceOutcome'>
+				
+		<button onclick='diceRoll()' disabled id='diceButton'>Roll the Dice</button>
+		<div id='diceOutput'></div>
+		
+		<hr>
+		
+		<h2>Card Tester</h2>
+		<button onclick='revealCards()' disabled id='cardButton'>Reveal Cards</button>
+		<div id='cardOutput'></div>
+		
+		<hr>		
+	</body>
+</html>
