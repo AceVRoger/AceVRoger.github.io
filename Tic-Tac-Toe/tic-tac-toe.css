@@ -3,9 +3,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-positioning: center;
+    background-attachment: fixed;
 }
 
-h1 {
+h1, h6 {
     background-color: black;
     color: gold;
     text-align: center;
@@ -23,23 +24,44 @@ h1 {
     background-color: #be93e9;
 }
 
-table {
-    align-items: center;
+table.center {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#StartButton {
+#StartButton, #StartButton.container, #StartButton.center {
     background-color: gold;
+    color: red;
     text-align: center;
     align-items: center;
     width: 310px;
     font-size: 30px;
+
+    position: absolute;
+    border: 3px solid blue;
+
+    margin 0;
+    position: absolute;
+    top: 74%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 #gameStatus {
     color: gold;
+    background-color: black;
     text-align: center;
 }
 
 .superSize {
     font-size: 60px;
+}
+
+#homeButton, button.center {
+    height: auto;
+    width: auto;
+    background-color: red;
+    text-align: center;
+    align-items: center;
 }

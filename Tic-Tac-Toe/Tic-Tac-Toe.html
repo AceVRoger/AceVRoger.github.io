@@ -14,8 +14,11 @@
 </head>
 <body>
     <h1>Tic-Tac-Toe</h1>
+    <a href="../index.html">
+        <button class="center">Main Page</button>
+    </a>
     <p id="gameStatus">Game Traker:</p>
-    <table>
+    <table class="center">
         <tr>
             <td><button id="a1" onclick=changeMark('a1')>T</button></td>
             <td><button id="b1" onclick=changeMark('b1')>I</button></td>
@@ -32,6 +35,14 @@
             <td><button id="c3" onclick=changeMark('c3')>E</button></td>
         </tr>
     </table>
-    <button id="StartButton" onclick="resetGame()">Start New Game</button>
+    <div class="container">
+        <div class="center">
+            <button id="StartButton" onclick="resetGame()">Start New Game</button>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <h6 id="header6">copyright 2025 Jacob V. Cardon. All rights reserved</h6>
+
 </body>
 </html>
