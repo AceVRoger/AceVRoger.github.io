@@ -1,11 +1,30 @@
 body {
-    background-color: grey;
+    background-image: url('sumiLandscapePainting.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-positioning: center;
 }
 
 h1 {
     background-color: black;
     color: gold;
     text-align: center;
+}
+
+#c1, #a2, #b3 {
+    background-color: pink
+}
+
+#a1, #b2, #c3 {
+    background-color: #f4c95a;
+}
+
+#b1, #c2, #a3 {
+    background-color: #be93e9;
+}
+
+table {
+    align-items: center;
 }
 
 #StartButton {

@@ -14,14 +14,78 @@
 		</style>
 		
 		<script>
+			/*
+			what is a loop? Block of code that repeats based on some condition.
+			Reduces redundancy, repeat for unknowns, iterate through collection.
+			DRY CODE - Don't Repeat Yourself
+
+			Types of loops:
+				while 	- executes a line or block of code as long as a condition is true
+						- when to use: when the number of repetitions is unknown; the code might never execute
+
+				do while - executes a line or block of code as long as the condition is true
+						- when to use: the number of repetitions is unknown; the code will always execute at least once
+
+				for (traditional) 	- repeats a line or block of code a specified number of times.
+									- when to use: when the number of repetitions is known.
+
+				for in
+				for of
+
+				infinite loop: a condition where the condition of the loop is true, and there is no way provided to make it false.
+				break: can be used to terminate a loop
+
+			*/
+
 			// while demo
 			function verifyAge() {				
-				// TODO: Verify age with while loop	
+				// TODO: Verify age with while loop
+				/*let age = prompt('Must be 21 to enter.\nWhat is your age?');
+
+				while (age < 21) {
+					alert('You are too young');
+					age = prompt('Must be 21 to enter.\nWhat is your age?');
+				}*/
+
+				//document.getElementById('ageButton').disable = true;
+				document.getElementById('diceButton').disable = false;
+				document.getElementById('cardButton').disable = false;
+
+				//Random number divisible by 5
+				let n = Math.floor(Math.random() * 100);
+
+				while (n % 5 != 0) {
+					n = Math.floor(Math.random() * 100);
+				console.log(n);
+				}
 			}
 		
 			// do-while demo
 			function diceRoll() {
 				// TODO: Roll dice with do-while loop
+				let count = 0;
+				let outcome = parseInt(document.getElementById('dieOutcome').value);
+				let output = '<p>';
+				let d1, d2;
+
+				do {
+					d1 = parseInt(Math.random() * 6) + 1;
+					d2 = parseInt(Math.random() * 6) + 1;
+
+					output += '&#' + (9855 + d1) + ', &#' + (9855 + d2) + ' ' + (++count) + ' <br>';
+
+					console.log(d1 + ', ' + d2);
+					if (count >= 1000) {
+						output += "Error";
+						break;
+					}
+
+				}
+				while (d1 + d2 != outcome);
+
+				document.getElementById('dieOutput').innerHTML = output + '<p>';
+
+
 				// TODO: Account for bad input with break
 			}
 			
@@ -31,11 +95,23 @@
 			// Clubs    (127185)
 			
 			function revealCards() {
+				let out = '<p>';
+
+				let start = 127137;
+				for (let i = start; i < start + 14; i++) {
+					output += '&#' + i + ';';
+					console.log(i);
+				}
+
+				document.getElementById('cardOutput').innerHTML = output + '<p>'
+
+
 				// TODO: Reveal cards with for loop
 				// TODO: Skip knight with continue
 			}		
 		</script>
 	</head>
+<html>
 	<body>
 		<h1>Dice and Card Tester</h1>
 		<p>Please verify your age to continue.</p>
