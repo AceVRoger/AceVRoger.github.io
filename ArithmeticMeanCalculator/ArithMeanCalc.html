@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arithmetic Mean Calculator</title>
+    <script src="AMC.js"></script>
+    <link rel="StyleSheet" href="../settings.css">
+</head>
+<body>
+    <h1>Arithmetic Mean Calculator</h1>
+    <a href="../index.html">
+        <button id="homeButton">Main Page</button>
+    </a>
+
+    <h2>Data Entry</h2>
+    <p><label>Enter a Value: </label>
+    <input type="text" id="userInput"></p>
+    <button onclick="addData()">Add Value</button>
+    <button onclick="removeData()">Remove Value</button>
+
+    <h2>Current Dataset:</h2>
+    <p>List of Data: <span id="dataDisplay"></span></p>
+
+    <h2>Mean:</h2>
+    <button onclick="meanCalc()">Calculate Mean</button>
+    <p>Result: <span id="meanDisplay"></span></p>
+
+</body>
+</html>

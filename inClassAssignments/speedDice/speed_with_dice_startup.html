@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Speed with Dice</title>
+		<style>
+			.dice {
+				font-size: 100px;				
+			}
+		</style>
+		<script>
+			// what's an array? - one variable that represents a group of data.
+			// let student1 = 'Samantha';
+			// let student2 = 'Jacob';
+			// let student4 = 'Noah';
+			// let student5 = 'Matisse';
+
+			// In array form... the above code ==...
+			//let students = ['Samantha', 'Jacob', 'Mckay', 'Noah', 'Matisse']
+
+			// Individual insertion at given point.
+			//students[10] = 'Joseph';
+
+			// Over-writing a specific spot.
+			//students[3] = 'Bob';
+
+			// adding an element to the end;
+			//students.push('Joseph');
+
+			// adding element to the front.
+			//students.unshift('Rubina');
+
+			// removing element from array.
+			//student.pop();
+
+			// remove from the front of array.
+			//students.shift();
+
+			// finding the location of an element in array.
+			//students.indexOf('Mckay');
+			//console.log(students.indexOf(('Mckay'));
+
+			// determine if in array with includes.
+			//console.log(students.includes('Jacob'));
+
+			//slice - extract data without modifying the original array (non-inclusive)
+			//console.log(students.slice(1,3));
+
+			//splice - extract data AND/OR replace while modifying original array. (inclusive)
+			//console.log(students.splice(1,2, 'Rubina', 'Diptil')) // splice(start, end non-inclusive)
+
+			// convert an array to a string with JOIN
+			//console.log(students.join(" "));
+
+			// Indexing: access individual elements []
+			//console.log(students);
+
+			// Iterating through array with 3 types of loops:
+
+			// Traditional: for loop, location is important, may need non-sequential access (i.e. reverse order, skip etc...)
+			//for (let i = 0; i < students.length; i++ ) {
+			//	console.log("Hi" + students[i] + "!");
+			//}
+
+			// for in (iterates through indices): location is important
+			//for (let i in students) {
+			//	console.log(i);
+			//}
+
+			// for of (iterates through values): just need the values... nothing more.
+			//for (let student of students) {
+			//	console.log(student);
+			//}
+
+			// forEach: TODO: next time.
+
+		</script>
+	</head>
+	<body>
+		<h1>Speed with Dice</h1>
+		<div id='computerArea'></div>
+		<div id='discardArea'></div>
+		<button onclick="discard_pile = getRandomCard(); redraw();">New Card</button>
+		<div id='playerArea'></div>		
+		
+		<script>
+			// TODO: Define empty arrays for each hand
+			let player_hand = [];
+			let computer_hand = [];
+			let discard_pile;
+		
+			function getRandomCard() {
+				// 9856 = die 1
+				return 9856 + Math.floor(Math.random() * 6);
+			}
+		
+			function startup() {							
+				// TODO: Load hands with push
+				for (let i = 0; i < 5; i++) {
+					player_hand.push(getRandomCard());
+					computer_hand.push(getRandomCard());
+				}
+				
+				discard_pile = getRandomCard();
+				redraw();
+			}
+			
+			function redraw() {
+				renderPile(player_hand, 'playerArea', true);
+				renderPile(computer_hand, 'computerArea');
+				renderPile([discard_pile], 'discardArea');
+				
+				// TODO: Determine winner with length
+			}
+			
+			function renderPile(hand, renderArea, clickable=false) {
+			
+				let output = '<p>';
+			
+				for (let i = 0; i < hand.length; i++) {
+					output += '<span class="dice"';
+					
+					if (clickable) 
+						output += 'onclick="discard(' + i + ')"';
+					
+					output += '>&#' + hand[i] + ';</span>';
+				}
+				
+				output += '</p>';
+			
+				document.getElementById(renderArea).innerHTML = output;
+			}
+		
+			function discard(index) {					
+				// TODO: discard by index
+				// check if card is valid
+				let diff = Math.abs(player_hand[index] - discard_pile);
+
+				// if valid, discard card
+				if (diff == 1 || diff == 5) {
+					discard_pile = player_hand[index];
+					player_hand.splice(index, 1);
+
+					redraw();
+				}
+
+			}
+		
+			function computerPlay() {
+				// TODO: array indexing
+				let offset = [-1, 1, -5, 5];
+
+				for (let i = 0; i < 4; i++)
+					if (computerDiscard(discard_pile + offset[i]))
+					return;
+			}		
+			
+			function computerDiscard(value) {
+				// TODO: discard by value with includes, indexOf, splice
+				if (computer_hand.includes(value)) {
+					let index = computer_hand.indexOf(value);
+					discard_pile = value;
+					computer_hand.splice(index, 1);
+					redraw();
+					return true;
+				}
+
+				return false;
+			}
+		
+			setInterval(computerPlay, 1000);
+			startup();
+		</script>
+	</body>
+</html>

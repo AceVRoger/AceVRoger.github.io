@@ -4,6 +4,7 @@ body {
     background-repeat: no-repeat;
     background-positioning: center;
     background-attachment: fixed;
+    text-align: center;
 }
 
 h1, h6 {
@@ -37,15 +38,7 @@ table.center {
     width: 310px;
     font-size: 30px;
 
-    position: absolute;
     border: 3px solid blue;
-
-    margin 0;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 #gameStatus {
@@ -56,12 +49,4 @@ table.center {
 
 .superSize {
     font-size: 60px;
-}
-
-#homeButton, button.center {
-    height: auto;
-    width: auto;
-    background-color: red;
-    text-align: center;
-    align-items: center;
 }

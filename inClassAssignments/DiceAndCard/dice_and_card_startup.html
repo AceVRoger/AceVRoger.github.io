@@ -20,11 +20,11 @@
 			DRY CODE - Don't Repeat Yourself
 
 			Types of loops:
-				while 	- executes a line or block of code as long as a condition is true
-						- when to use: when the number of repetitions is unknown; the code might never execute
+				while 		- executes a line or block of code as long as a condition is true
+							- when to use: when the number of repetitions is unknown; the code might never execute
 
-				do while - executes a line or block of code as long as the condition is true
-						- when to use: the number of repetitions is unknown; the code will always execute at least once
+				do while 	- executes a line or block of code as long as the condition is true
+							- when to use: the number of repetitions is unknown; the code will always execute at least once
 
 				for (traditional) 	- repeats a line or block of code a specified number of times.
 									- when to use: when the number of repetitions is known.
@@ -95,10 +95,12 @@
 			// Clubs    (127185)
 			
 			function revealCards() {
-				let out = '<p>';
-
+				let output = '<p>';
 				let start = 127137;
+
 				for (let i = start; i < start + 14; i++) {
+					if (i == start + 11)
+						continue;
 					output += '&#' + i + ';';
 					console.log(i);
 				}
