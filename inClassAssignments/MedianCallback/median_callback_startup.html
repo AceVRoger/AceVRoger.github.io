@@ -1,0 +1,38 @@
+<script>
+	function selectionSort(arr, callback) {
+		let n = arr.length;
+		
+		for (let i = 0; i < n - 1; i++) {
+			let minIndex = i;
+			for (let j = i + 1; j < n; j++) {
+				if (arr[j] < arr[minIndex]) {
+					minIndex = j;
+				}
+			}
+
+			temp = arr[i];
+			arr[i] = arr[minIndex];
+			arr[minIndex] = temp;
+		}
+
+		// Sorting complete, execute callback
+		return callback(arr);
+	}
+
+	function generateRandomData(size) {
+		arr = [];
+		for (let i = 0; i < size; i++)
+			arr.push(Math.floor(Math.random() * 1000));
+		return arr;
+	}
+
+	// Function relies on sorted data
+	function findMedian(sortedArray) {
+		const mid = Math.floor(sortedArray.length / 2);
+		const median = sortedArray.length % 2 === 0
+			? (sortedArray[mid - 1] + sortedArray[mid]) / 2
+			: sortedArray[mid];
+		
+		return median;
+	}
+</script>

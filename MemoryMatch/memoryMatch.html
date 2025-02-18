@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Match</title>
+    <style>
+        .tile {
+            font-size: xx-large;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            background-color: purple;
+            color: white;
+            text-align: center;
+            border: none;
+        }
+
+        td {
+            width: 100px;
+            height: 100px;
+        }
+
+        body {
+            background-image: url('JapanSumiArt.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-positioning: center;
+            background-attachment: fixed;
+            item-align: center;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Memory Match</h1>
+    <p><button onclick="resetBoard()">Reset Game</button>
+    <a href="../index.html">
+        <button id="homeButton">Main Page</button>
+    </a></p>
+    <div id='gameBoard'></div>
+
+    <script src='MemMatch.js'></script>
+
+</body>
+</html>
