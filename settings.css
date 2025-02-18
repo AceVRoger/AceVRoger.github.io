@@ -31,3 +31,59 @@ h6 {
 label {
     color: yellow;
 }
+
+/*Dark-mode settings*/
+body.dark-mode {
+    background-color: black;
+    color: red;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h6 {
+    background-color: grey;
+    color: white;
+}
+
+body.dark-mode p {
+    background-color: black;
+    color: red;
+}
+
+body.dark-mode button {
+    background-color: grey;
+    color: white;
+}
+
+body.dark-mode button:hover {
+    background-color: white;
+    color: grey;
+}
+
+/* Barbie Mode Styles */
+body.pink-mode {
+    background-color: #ffb7c5; /* Barbie pink background */
+    color: #e0218a; /* Barbie pink text */
+}
+
+body.pink-mode h1,
+body.pink-mode h2,
+body.pink-mode h6 {
+    background-color: #db7093; /* Light pink */
+    color: white;
+}
+
+body.pink-mode p {
+    background-color: #ffb7c5;
+    color: #e0218a;
+}
+
+body.pink-mode button {
+    background-color: #db7093; /* Barbie pink */
+    color: white;
+}
+
+body.pink-mode button:hover {
+    background-color: #e0218a; /* Darker Barbie pink for hover */
+    color: white;
+}

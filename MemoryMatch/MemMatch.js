@@ -99,7 +99,7 @@ const checkMatch = () => {
         matchedCount += 1;
 
         if (matchedCount === (map.length * map[0].length) / 2) {
-            alert("Congrats! Every Tile Has A Match!!!")
+            alert("Congrats! You Matched Them ALL!!!")
         }
     }
 
