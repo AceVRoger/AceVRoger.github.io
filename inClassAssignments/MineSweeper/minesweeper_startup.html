@@ -33,8 +33,41 @@
 					
 			function reloadMap() {
 				// TODO: Implement reload map function as 2D array demo
-				
+				// Makes an empty grid:
+				for (let row = 0; row < rows; row++) {
+					mineMap[row] = [];
+					for (let col = 0; col < cols; col++) {
+						mineMap[row][col] = "-";
+					}
+				}
+
+				let minesRemain = mines;
+				do {
+					let randRow = Math.floor(Math.random() * rows);
+					let randCol = Math.floor(Math.random() * cols);
+
+					if (mineMap[randRow][randCol] == '-') {
+						mineMap[randRow][randCol] = 'M';
+						minesRemain--;
+					}
+				} while (minesRemain > 0);
+
+<!--				for (let row = 0; row < rows; row++) {-->
+<!--					for (let col = 0; col < cols; col++) {-->
+
+					const calcNum = (row, col) => {
+						let touchCount = calculateValue(row, col);
+
+						if (mineMap[row][col] != 'M')
+							mineMap[row][col] = touchCount;
+
+					traverseGrid(calcNum);
+				}
+
+				console.log(mineMap);
+
 				// TODO: Implement buildTable as callback at the end of reloadMap();
+				callback();
 			}
 			
 			function process(event, row, col) {
@@ -70,17 +103,27 @@
 					}
 				}
 			}
+
+			function traverseGrid(callback) {
+				for (let row = 0; row < rows; row++)
+					for (let col = 0; col < cols; col++) {
+						callback(row, col);
+					}
+			}
 			
 			function gameOver() {
 				// TODO: Traverse grid with anonymous callback function
-				for (let row = 0; row < rows; row++)
-					for (let col = 0; col < cols; col++) {
+<!--				for (let row = 0; row < rows; row++)-->
+<!--					for (let col = 0; col < cols; col++) {-->
+
+					const reveal = (row, col) => {
 						let button = document.getElementById(row + "_" + col);
 						if (mineMap[row][col] == 'M')
 							button.innerHTML = bomb;
 							
 						button.disabled = true;
-					}		
+					}
+					traverseGrid(reveal);
 			}
 			
 			// TODO: Implement traverseAdjacent with callback
@@ -157,7 +200,7 @@
 			for (let i = 0; i < mineMap.length; i++)
 				console.log(mineMap[i]);
 				
-			reloadMap();			
+			reloadMap(buildTable);
 		</script>	
 	</body>
 </html>
