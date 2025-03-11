@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body id="myBody">
+    <h1 id="main-title">Welcome to the DOM</h1>
+
+    <p class="description">Document Object Model: our programming interface for WEB docs.</p>
+    <p class="description">DOM is set up as a hierarchy.</p>
+
+    <ul>
+        <li>Document Node: entire web page</li>
+        <li>Element Node: HTML tags</li>
+        <li>Attributes Node: Inside Elements</li>
+        <li>Text Node: text inside elements</li>
+    </ul>
+
+    <p>What's the point?</p>
+    <p>Allows us to: modify content, change styles, respond to events,
+    add/remove content dynamically.</p>
+    
+    <p class="description">This is a paragraph.</p>
+    <p class="description">Another paragraph in the document.</p>
+    
+    <ul id="item-list">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+    </ul>
+    
+    <button id="change-text">Change Text</button>
+    <button id="highlight-items">Highlight Items</button>
+    
+    <!--<img id="logo" src="logo.png" alt="Website Logo"> -->
+
+    <script>
+        let page = document.getElementById('myBody');
+        console.log(page.firstElementChild);
+        console.log(page.lastElementChild);
+        console.log(page.parentNode);
+
+        // other ways to "grab" and manipulate elements
+        let paragraphs = document.getElementsByClassName('description');
+        console.log(paragraphs);
+        paragraphs[2].textContent = 'New Words';
+        for (let i = 0; i < paragraphs.length; i++) {
+            paragraphs[i].style.color = 'red';
+        }
+
+        let items = document.getElementsByTagName('li');
+        console.log(items);
+        for (let i = 0; i < items.length; i++) {
+            items[i].style.backgroundColor = 'grey';
+        }
+        console.log(items);
+
+        // First matching element with CSS Selector
+        let firstItem = document.querySelector('.item');
+        firstItem.style.backgroundColor = 'yellow';
+
+        let allItems = document.querySelectorAll('button');
+           for (let i = 0; i < allItems.length; i++) {
+                allItems[i].style.backgroundColor = 'blue';
+           }
+        console.log(allItems);
+
+        // may be used in conjunction with:
+            //.textContent - Just changes text nodes
+            //.innerHTML - may include html tags
+            //.setAttribute
+
+
+    </script>
+</body>
+</html>
