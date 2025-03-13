@@ -45,15 +45,48 @@
 			    // removeChild(), replaceChild()
 			
 			// TODO: Turn on shuffle
-			// shuffle();
+			shuffle();
 		}
 
 		function changeLights(element) {		
 			// TODO: Traversing DOM
 			lights = [];
 
-			//console.log(element);
-			element.classList.add('lighted');
+			lights.push(element); // center piece
+			lights.push(element.previousElementSibling); // left piece
+			lights.push(element.nextElementSibling); // right piece
+
+			let currentRow = element.parentNode;
+			console.log(currentRow);
+
+			let rowAbove = currentRow.previousElementSibling;
+			let position = Array.from(currentRow.children).indexOf(element);
+			if (rowAbove !== null) {
+			    let cellAbove = rowAbove.children[position];
+			    lights.push(cellAbove);
+			}
+
+			let rowBelow = currentRow.nextElementSibling;
+			if (rowBelow !== null) {
+			    let cellBelow = rowBelow.children[position];
+			    lights.push(cellBelow);
+			}
+
+			console.log(rowAbove);
+			console.log(position);
+
+			console.log(element.previousElementSibling);
+			//element.classList.add('lighted');
+
+			lights.forEach((item) => {
+			    if (item != null)
+			        item.classList.toggle('lighted');
+
+<!--			    if (item.clasList.contains('lighted'))-->
+<!--			        item.classList.remove('lighted');-->
+<!--			    else-->
+<!--			        item.classList.add('lighted');-->
+			});
 			
 			if (checkWin())
 				alert('Winner');
