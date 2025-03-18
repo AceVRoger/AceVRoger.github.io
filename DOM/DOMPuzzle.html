@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Puzzle</title>
+        <style>
+            /* NOTE: Do NOT modify this stylesheet */
+            #puzzle {
+                width: 500px;
+                height: 500px;
+                border: 5px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NOTE: Do NOT modify the body or div -->
+        <div id='puzzle'></div>
+        <script>
+            // All puzzle code must be implemented here
+
+            // Making Title
+            const title = document.createElement('h1');
+            title.textContent = 'DOM Puzzle';
+
+            // Making description element
+            const description = document.createElement('p');
+            description.textContent = 'This is a puzzle created entirely with JavaScript';
+
+            // Home Button
+            const mainPageBtn = document.createElement('button');
+            mainPageBtn.textContent = 'Main Page'
+
+            mainPageBtn.addEventListener('click', () => {
+                window.location.href="../index.html";
+            })
+
+            // connecting title description and home button around puzzle box
+            document.body.insertBefore(title, document.getElementById('puzzle'));
+            document.body.insertBefore(mainPageBtn, document.getElementById('puzzle'));
+            document.body.appendChild(description);
+
+
+
+
+
+
+
+
+            // Main Box
+            puzzle.style.display = 'grid';
+            puzzle.style.gridTemplateColumns = '50% 50%';
+            puzzle.style.gridTemplateRows = '50% 50%';
+
+
+
+
+
+
+
+
+
+            // Top Left Section of Puzzle
+            const topLeftBox = document.createElement('div');
+            topLeftBox.style.border = '2px solid black';
+            topLeftBox.style.display = 'grid';
+            topLeftBox.style.gridTemplateColumns = '50% 50%'
+            topLeftBox.style.gridTemplateRows = '50% 50%'
+
+            const letters = ['A', 'B', 'C', 'D']
+            const colors = ['#9455F4', '#4A2B74', '#594492', '#854DDC'];
+
+            // 4 squares in top left area
+            for (let i = 0; i < 4; i++) {
+                const smallerSquare = document.createElement('div');
+                smallerSquare.style.border = '2px solid black';
+                smallerSquare.style.backgroundColor = colors[i];
+                smallerSquare.textContent = letters[i];
+                smallerSquare.style.color = 'white';
+                smallerSquare.style.width = '125px';
+                smallerSquare.style.height = '125px'
+                smallerSquare.style.display = 'flex';
+                smallerSquare.style.justifyContent = 'center';
+                smallerSquare.style.alignItems = 'center';
+                topLeftBox.appendChild(smallerSquare);
+            }
+
+            // Connecting top left boxes to the main puzzle board
+            puzzle.appendChild(topLeftBox);
+
+
+
+
+
+
+
+            // top right box
+            const topRightBox = document.createElement('topRightBox');
+            topRightBox.style.backgroundColor = '#7338A0';
+            document.getElementById('puzzle').appendChild(topRightBox);
+
+            // bottom left box
+            const bottomLeftBox = document.createElement('bottomLeftBox');
+            bottomLeftBox.style.backgroundColor = '#7338A0';
+            document.getElementById('puzzle').appendChild(bottomLeftBox);
+
+
+
+
+
+
+
+
+
+
+            // bottom right region
+            const bottomRightBox = document.createElement('div');
+            bottomRightBox.style.display = 'grid';
+            bottomRightBox.style.gridTemplateColumns = 'repeat(10, 1fr)';
+            bottomRightBox.style.gridTemplateRows = 'repeat(10, 1fr)';
+            bottomRightBox.style.width = '250px';
+            bottomRightBox.style.height = '250px';
+            bottomRightBox.style.gap = '0';
+
+
+           // making 100 buttons
+           for (let i = 1; i <= 100; i++) {
+            const button = document.createElement('button');
+            button.style.backgroundColor = '#C39CFE';
+            button.style.border = '2px solid black';
+            button.style.boxShadow = '2px 2px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(0, 0, 0, 0.1)';
+            button.style.width = '25px';
+            button.style.height = '24px'
+            button.style.padding = '0';
+            button.style.margin = 0
+
+
+
+            button.addEventListener('click', () => {
+                //alert(`${i} button clicked`)
+                button.style.backgroundColor = '#4A2574';
+
+                const index = i - 1;
+
+                const previousButton = bottomRightBox.children[index - 1];
+                const nextButton = bottomRightBox.children[index + 1];
+
+                if (previousButton)
+                    previousButton.style.backgroundColor = '#FF9E00';
+                if (nextButton)
+                    nextButton.style.backgroundColor = '#FF9E00';
+            });
+
+            bottomRightBox.appendChild(button);
+           }
+
+           puzzle.appendChild(bottomRightBox);
+
+
+
+
+
+
+
+
+
+
+
+
+            puzzle.addEventListener('mouseenter', ()=> {
+                puzzle.style.border = '5px solid red';
+            });
+
+            puzzle.addEventListener('mouseleave', ()=> {
+                puzzle.style.border = '';
+            });
+        </script>
+    </body>
+</html>
