@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sign Me Up</title>
+		<style>
+			/* TODO: Invalid style */
+		</style>
+	</head>
+	<body>
+		<h1>Sign Me Up</h1>
+		<!-- TODO: Investigate GET vs POST -->
+		<!-- IDOR = Insecure Direct Object References (attackers can write a script to download all data they should not otherwise have access to)-->
+		<form id="signupForm" action="process.php" method="post">
+			<!-- TODO: Various HTML validation -->
+			<label for="email">Email:</label>
+			<input
+					id="email"
+					name="useremail"
+					type="email"
+					placeholder="i.e. email@gmail.com">
+					<!-- autocomplete="email" -->
+					<!--required: simply makes the field information required before continuing -->
+			<br><br>
+
+			<label for="year">Year of Birth:</label>
+			<input
+					id="year"
+					name="DOB"
+					placeholder="####"
+					pattern="[0-9]{4}"
+					title="Please Enter 4 numbers."
+
+			>
+			<br><br>
+
+			<label for="username">Username:</label>
+			<input
+					id="username"
+					name="user"
+					type="text"
+					autocomplete="username"
+					pattern="[a-zA-Z0-9_]{4,8}"
+					title="Lowercase letters only with 4-8 characters."
+			>
+			<br><br>
+			
+			<!-- TODO: Use real-time feedback with JS -->
+			<label for="password">Password:</label>
+			<input
+					id="password"
+					name="userpass"
+					type="password"
+			> <br>
+			<p id="passwordMessage"></p>
+
+			<button type="submit">Sign Up</button>
+		</form>
+		
+		<script>	
+		// TODO: Custom validation on submit
+		document.getElementById('signupForm').addEventListener("submit", function(event) {
+			//alert('Form submitted');
+			const password = document.getElementById('password').value;
+			const username = document.getElementById('username').value;
+
+			if (password.includes(username)) {
+				event.preventDefault();
+				alert("Your password cannot contain your username!");
+			}
+		});
+
+
+		
+		// TODO: Real-time custom validation
+		</script>
+	</body>
+</html>
