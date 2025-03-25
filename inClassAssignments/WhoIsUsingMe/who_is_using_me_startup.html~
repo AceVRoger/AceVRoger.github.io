@@ -1,0 +1,135 @@
+<!-- NOTE: This must be run on a local server; the cookies will not work if executed as a file -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Who is Using Me</title>
+	</head>
+	<body>
+		<h1>Who is Using Me?</h1>
+
+		<p id="welcome">Welcome <span id="currentUser"></span>!</p>
+		<button onclick="removeCookie()">Sign Out</button>
+		<hr>
+
+		<h2>Sign In</h2>
+		<label for="username">Username</label>
+		<input type="text" id="username" pattern="^[a-zA-Z0-9_]+$" autocomplete="username"></input> <br><br>
+		<button onclick="signIn()">Sign In</button>
+		<hr>
+
+		<h2>Settings</h2>
+		<label for="colorInput">Enter preferred background color (hex):</label>
+		<input type="text" id="colorInput" pattern="^#[0-9A-Fa-f]{6}$" placeholder="#ffffff"> <br><br>
+		<button onclick="saveSettings()">Update and Save</button>
+		<hr>
+
+		<h2>Shopping</h2>
+		<label for="cartItem">Shopping Item:</label>
+		<input type="text" id="cartItem" pattern="^[a-zA-Z]+$"> <br></br>
+		<button onclick="addToCart()">Add to Cart</button>
+		<p>Shopping Cart: <span id="cart">Empty</span></p>
+		<button onclick="clearSession()">Clear Cart</button>
+
+		<hr>
+		<h2>Additional</h2>
+		<button onclick="location.reload(true)">Page Refresh</button><br><br>
+		<button onclick="clearLocal()">Clear all Settings</button>
+
+		<script>
+			// API = Application Programming Interface
+			// Browser-based API
+			// Server-based API
+
+			// Today: Cookies, localStorage, sessionStorage (Browser API)
+			// A type of storage, can be used for preferences, login etc.
+
+			// Cookies: 4kb of data, have an expiration date
+			// localStorage: 5MB of data, doesn't have an expiration date
+
+			function getCookie(name) {
+				const cookies = document.cookie.split(';');
+				for (let i = 0; i < cookies.length; i++) {
+					let cookie = cookies[i].trim();
+					if (cookie.startsWith(name + '=')) {
+						return cookie.substring(name.length + 1);
+					}
+				}
+			}
+
+			function removeCookie() {
+				// to remove a cookie you need to set the expiration to being past the date
+				document.cookie = "username; expires=Thu, 01 Jan 1970 00:00:00: UTC; path=/"
+			}
+
+			// will use to set up cookies
+			function signIn() {
+				let username = document.getElementById('username');
+
+				if (!username.checkValidity()) {
+					alert('Invalid username');
+					return;
+				}
+
+				// Here is what we need: Some property, value, expiration, (optional ___)
+				let date = new Date();
+				date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+				let expires = "expires = " + date.toUTCString();
+				let cookiestr = "username" + username.value + "; " + expires + "; path=/";
+				// console.log(cookiestr)
+				document.cookie = cookiestr;
+
+				location.reload(true);
+			}
+
+			let currentUser = null;
+			function loadUser() {
+				currentUser = getCookie('username');
+				currentUser = currentUser ? currentUser : 'Guest';
+
+				document.getElementById('currentUser').textContent = currentUser;
+
+				if (currentUser !== 'Guest') {
+					// Load local setting(s)
+					const color = localStorage.getItem(currentUser + 'color');
+
+					if (color) {
+						document.body.style.backgroundColor = color;
+					}
+				}
+			}
+
+			function saveSettings() {
+				const color = document.getElementById('colorInput');
+
+				if (!color.checkValidity()) {
+					alert('Invalid Color!');
+					return;
+				}
+
+				if (!currentUser || currentUser === 'Guest') {
+					alert('Must be signed in to save...');
+					return;
+				}
+
+				document.body.style.backgroundColor = color.value;
+				localStorage.setItem(currentUser + 'color', color.value);
+			}
+
+			function clearLocal() {
+				
+			}
+
+			function addToCart() {
+				
+			}
+
+			function clearSession() {
+				
+			}
+
+			loadUser();
+		</script>
+	</body>
+</html>
