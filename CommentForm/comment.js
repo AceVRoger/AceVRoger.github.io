@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let color = "red";
         if (missingUser.length === 0) {
             strength = "strong"
-            color = "green"
+            color = "gold"
         }
 
         userOutput = "Username Strength: <span style='color: " + color + "'>" + strength + "</span><br> " + userOutput;
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let color;
         if (missingPass.length === 0) {
             strength = "strong"
-            color = "green"
+            color = "gold"
         }
         else {
             strength = "weak";
