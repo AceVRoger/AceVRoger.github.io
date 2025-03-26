@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment Submission Form</title>
+    <script src="comment.js"></script>
+    <link rel="StyleSheet" href="commentStyle.css">
+</head>
+<body>
+<!--Comment Submission Form -->
+<h2>Comment Submission Form</h2>
+<form id="commentForm">
+<label for="name">Name:</label>
+    <input
+            type="text"
+            id="name"
+            name="fullName"
+            placeholder="i.e.  Sakamoto Taro"
+            pattern="[a-zA-Z\s]+"
+            title="Only letters and spaces allowed"
+            required
+    >
+    <br><br>
+
+<label for="phone">Phone Number:</label>
+    <input
+            type="tel"
+            id="phone"
+            name="cellPhone"
+            placeholder="###-###-####"
+            pattern="^\d{3}-?\d{3}-?\d{4}$"
+            title="Please Enter A Valid Phone Number."
+            required
+    >
+    <br><br>
+
+<label for="email">Email:</label>
+    <input
+            type="email"
+            id="email"
+            name="userEmail"
+            placeholder="i.e. email@gmail.com"
+            required
+    >
+    <br><br>
+
+<label for="comment">Comment:</label>
+    <textarea
+            id="comment"
+            name="commentBox"
+            rows="4"
+            cols="20"
+            placeholder="Type your comments here..."
+            required
+    ></textarea>
+    <br><br>
+
+    <label for="username">Username:</label>
+    <input
+            id="username"
+            name="user"
+            type="text"
+            autocomplete="username"
+            pattern="[a-zA-Z0-9_]{4,16}"
+            title="Lowercase letters only with 4-8 characters."
+            required
+    >
+    <br><br>
+
+    <!-- Real-time feedback regarding password -->
+    <label for="password">Password:</label>
+    <input
+            id="password"
+            name="userpass"
+            type="password"
+            required
+    >
+    <br>
+    <p id="userMessage"></p>
+    <p id="passwordMessage"></p>
+
+    <button type="submit">Submit</button>
+</form>
+
+<br>
+
+<a href="../index.html">
+    <button id="homeButton">Main Page</button>
+</a>
+
+</body>
+</html>

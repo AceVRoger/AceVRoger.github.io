@@ -1,0 +1,8 @@
+body {
+    background-image: url('scoobySearch.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-positioning: center;
+    background-attachment: fixed;
+    color: red;
+}

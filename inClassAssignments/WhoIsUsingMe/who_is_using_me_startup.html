@@ -47,6 +47,7 @@
 
 			// Cookies: 4kb of data, have an expiration date
 			// localStorage: 5MB of data, doesn't have an expiration date
+			// sessionStorage: persists until the browser is closed
 
 			function getCookie(name) {
 				const cookies = document.cookie.split(';');
@@ -75,7 +76,7 @@
 				// Here is what we need: Some property, value, expiration, (optional ___)
 				let date = new Date();
 				date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
-				let expires = "expires = " + date.toUTCString();
+				let expires = "expires= " + date.toUTCString();
 				let cookiestr = "username" + username.value + "; " + expires + "; path=/";
 				// console.log(cookiestr)
 				document.cookie = cookiestr;
@@ -98,6 +99,10 @@
 						document.body.style.backgroundColor = color;
 					}
 				}
+
+				let shoppingList = sessionStorage.getItem('shoppingList');
+				shoppingList = shoppingList ? shoppingList : 'Empty';
+				document.getElementById('cart').textContent = shoppingList;
 			}
 
 			function saveSettings() {
@@ -122,7 +127,15 @@
 			}
 
 			function addToCart() {
-				
+				const item = document.getElementById('cartItem')
+
+				// TODO: check validity
+
+				let shoppingList = sessionStorage.getItem('shoppingList');
+				shoppingList = shoppingList ? shoppingList + ', ' : '';
+				shoppingList += item.value;
+				sessionStorage.setItem('shoppingList', shoppingList);
+				document.getElementById('cart').textContent = shoppingList;
 			}
 
 			function clearSession() {
