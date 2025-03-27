@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Async Demo</title>
+    <script src="script.js">
+		let data = null;
+
+		function loadData() {
+			arr = [];
+			for (let i = 0; i < 5000; i++)
+				arr.push(Math.floor(Math.random() * 10000));
+
+			let n = arr.length;
+
+			for (let i = 0; i < n - 1; i++) {
+				let minIndex = i;
+				for (let j = i + 1; j < n; j++) {
+					if (arr[j] < arr[minIndex]) {
+						minIndex = j;
+					}
+				}
+
+				temp = arr[i];
+				arr[i] = arr[minIndex];
+				arr[minIndex] = temp;
+
+				// Added to slow down processing
+				console.log(arr);
+			}
+
+			const mid = Math.floor(arr.length / 2);
+			const median = arr.length % 2 === 0
+				? (arr[mid - 1] + arr[mid]) / 2
+				: arr[mid];
+
+<!--			// Added to showcase completion-->
+			alert('Processing complete.');
+
+			let dataSuccessful = parseInt(Math.random() * 2);
+			if (dataSuccessful) {
+				data = median;
+				return true;
+			}
+			else
+				return false;
+		}
+
+		function updateDisplay(value) {
+			document.getElementById('median').innerHTML = value;
+		}
+
+<!--        // JavaScript is single-threaded-->
+<!--        // Callbacks is one way to handle our sequence of function calls-->
+<!--        // what about those situations when our code fails?-->
+
+        window.onload = function() {
+            loadData();             // Producing Code
+            updateDisplay(data);    // Consuming Code
+        }
+
+<!--        // Promise: an object that links the producing code to your consuming code.-->
+<!--        // w/ built in mechanism for situations when the producing code fails-->
+
+        window.onload = function() {
+            let promise = new Promise(function(resolved, reject) {
+                let dataSuccessful = loadData();
+
+                if (dataSuccessful)
+                    resolve(data);
+                else
+                    reject("Unable to load data.")
+            });
+
+            promise.then(
+                function(value) {updateDisplay(value);},
+                function(error) {updateDisplay(error);}
+            ).finally(function() {
+                // Example: removing a loading bar...
+                console.log('Processing complete, cleaning up...');
+            });
+
+<!--            // TODO: comment out info above-->
+
+<!--            // async: forces a function to return a Promise-->
+<!--            // return == resolve-->
+<!--            // throw == fail (reject)-->
+            async function checkoutData() {
+                if (loadData())
+                    return data;
+                else
+                    throw new Error("Unable to load data.");
+            }
+
+<!--            checkoutData().then(-->
+<!--                function(value) {updateDisplay(value);},-->
+<!--                function(error) {updateDisplay(error);}-->
+<!--            );-->
+
+            checkoutData()
+                .then(function(value) {updateDisplay(value);})
+                .catch(function(error) {updateDisplay(value);})
+
+<!--            await: can only be used inside an async function-->
+<!--            await pauses and waits for a resolved promise-->
+<!--            await is placed before a promise, or a function that returns a promise-->
+            async function checkoutData() {
+                try{
+                    let promise = new Promise(function(resolved, reject) {
+                        if (loadData())
+                            resolved(data);
+                        else
+                            reject("Unable to load data");
+                    });
+
+                    let result = await promise;
+                    updateDisplay(result);
+                }
+                catch (error) {
+                    updateDisplay(error);
+                }
+            }
+
+<!--            checkoutData();-->
+
+<!--            JSON: JavaScript Object Notation-->
+<!--            Javascript object-->
+                const user = {
+                    name: "Tom",
+                    age: 21,
+                    password: "password123"
+                };
+
+                let stringUser = JSON.stringify(user);
+                console.log(stringUser);
+
+                const downloadedUser = JSON.parse(stringUser);
+                console.log(downloadedUser);
+                console.log(downloadedUser.name);
+
+                const downloadedData = '[{"name": "Jeff", "age": 22}, {"name": "bob", "age": 55}]';
+
+                const users = JSON.parse(downloadedData);
+                console.log(users[0].name);
+
+                async function getWeather() {
+                    try {
+                        let response = await fetch(https://api.open-meteo.com/v1/forecast?latitude=41.223&longitude=-111.9738&hourly=temperature_2m&temperature_unit=fahrenheit);
+                        let data = await response.JSON();
+                        console.log(date.hourly.temperature_2m[0]);
+                        console.log(date.hourly.time[0]);
+
+                        let midnightTemp = data.hourly.temperature_2m[0];
+                        let midnightTime = data.hourly.time[0];
+
+<!--                        document.getElementById()      NOT FINISHED-->
+                    } catch (error) {
+<!--                    TODO: Add actual error message on page-->
+                        console.log('Error fetching the weather.')
+                    }
+                }
+
+        }
+
+
+
+	</script>
+</head>
+<body>
+    <h1>Beautiful Page</h1>
+    <p>Beautiful page content.</p>
+
+    <p>Median datapoint: <span id="median">Loading...</span></p>
+
+</body>
+</html>
+
