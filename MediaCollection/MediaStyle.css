@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+button {
+    text-align: center;
+    //TODO: make it center on page...
+}
+
+#warning {
+    background-color: black;
+    color: red;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#searchbar {
+    width: 80%;
+    padding: 10px;
+    margin: 20px auto;
+    font-size: 1em;
+    display: block
+    text-align: center;
+}
+
+#mediaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: left;
+    padding: 20px;
+}
+
+.mediaItem {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    width: 80%;
+    max-width: 800px;
+}
+
+.media-image {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.media-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.media-info h4 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.media-info p {
+    margin: 5px 0;
+    color: #666;
+}
