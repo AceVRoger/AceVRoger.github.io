@@ -33,7 +33,53 @@ class Card {
         this.#cardElement.style.cursor = 'pointer';
 
         // Next Time: implement drag and drop interface using OOP approach
+        this.#cardElement.addEventListener("dragStart", this.#dragStart.bind(this));
+        this.#cardElement.addEventListener("dragOver", this.#dragOver);
+        this.#cardElement.addEventListener("dropCard", this.#dropCard);
     }
+
+    #dragStart (event) {
+        const cardValues = {
+            id: this.#cardId;
+            suit: this.suit;
+            value: this.value;
+        };
+
+        //console.log(cardValues);
+
+        const currentCard = JSON.stringify(cardValues);
+        event.dataTransfer.setData("application/json", currentCard);
+        console.log(currentCard);
+    };
+
+    #dragOver (event) {
+        event.preventDefault();
+    };
+
+    #dropCard (event) {
+        const data = event.dataTransfer.getData("application/json");
+        const dragCard = JSON.parse(data);
+
+        //console.log(dragCard);
+
+        const dropValue = event.target.getAttribute('data-Value');
+        const dropSuit = event.target.getAttribute('data-suit');
+
+        if (dragCard.suit != dropSuit && dragCard.value != dropValue)
+            return;
+
+        const cardTable = document.getElementById('cardTable');
+        const cards = Array.from(cardTable.children);
+
+        const dragIndex = cards.findIndex(card => card.id == dragCard.id);
+        const dropIndex = cards.findIndex(card => card === event.target);
+
+        if (dropIndex !== dragIndex - 1 && dropIndex !== dragIndex - 3)
+            return;
+
+        event.target.replaceWith(document.getElementById(dragCard.id));
+
+    };
 
     get cardElement() {
         return this.#cardElement;
