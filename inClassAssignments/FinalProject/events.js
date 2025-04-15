@@ -13,11 +13,9 @@
 
 
 
-    
+
 // Landing: based on where the last stone lands special condition occur.
     // Occupied space: nothing happens
     // Empty Space: your last stone and the stones on your opponents side directly across go into your score pit
     // Score pit: player gets to take an extra turn
-function Landing(lastPiece) {
-    
-}
+function Landing(lastPiece) {}
